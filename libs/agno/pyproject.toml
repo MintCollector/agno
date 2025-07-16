@@ -68,6 +68,10 @@ langfuse = ["langfuse"]
 anthropic = ["anthropic"]
 azure = ["azure-ai-inference", "aiohttp"]
 cerebras = ["cerebras-cloud-sdk"]
+claudecode = ["claude-code-sdk"]
+
+# Minimal install for just ClaudeCode (no conflicting dependencies)
+claudecode-minimal = ["claude-code-sdk"]
 cohere = ["cohere"]
 infinity = ["infinity_client"]
 google = ["google-genai"]
@@ -160,11 +164,12 @@ docker = ["agno-docker"]
 # Dependencies for AWS
 aws = ["agno-aws", "agno-docker"]
 
-# All models
+# All models (excluding conflicting ones)
 models = [
   "agno[anthropic]",
   "agno[azure]",
   "agno[cerebras]",
+  "agno[claudecode]",
   "agno[cohere]",
   "agno[infinity]",
   "agno[google]",
@@ -176,6 +181,12 @@ models = [
   "agno[mistral]",
   "agno[ollama]",
   "agno[openai]"
+]
+
+# Models with conflicting dependencies (install separately)
+models-extended = [
+  "agno[models]",
+  "agno[lmstudio]"
 ]
 
 # All tools
