@@ -206,7 +206,7 @@ docker = ["agno-docker"]
 # Dependencies for AWS
 aws = ["agno-aws", "agno-docker"]
 
-# All models (without lmstudio to avoid conflicts)
+# All models
 models = [
   "agno[anthropic]",
   "agno[azure]",
@@ -222,7 +222,7 @@ models = [
   "agno[mistral]",
   "agno[ollama]",
   "agno[openai]"
-  # "agno[lmstudio]"  # Excluded due to httpx conflicts
+  # "agno[lmstudio]"  # Excluded due to httpx conflicts with brave-search
 ]
 
 # All tools (without conflicting brave-search)
@@ -331,10 +331,10 @@ embedders = [
   "agno[huggingface]"
 ]
 
-# All libraries for testing (original, with conflicts)
+# All libraries for testing
 tests = [
     "agno[dev]",
-    "agno[models]",
+    "agno[models]",  # Now without lmstudio, so no conflict
     "agno[tools]",
     "agno[storage]",
     "agno[vectordbs]",

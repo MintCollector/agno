@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/jamesedwards/code/mcps/agno/agno/logs/.200b56f76a7122c061331ec32e4b5fb8fd56bb70-audit.json",
+    "files": [
+        {
+            "date": 1752631609689,
+            "name": "/Users/jamesedwards/code/mcps/agno/agno/logs/mcp-puppeteer-2025-07-15.log",
+            "hash": "3e7e941ed155fd14137d962d21a57cbe757ca4fca63c717ca15103fa3866bcfd"
+        },
+        {
+            "date": 1752683423567,
+            "name": "/Users/jamesedwards/code/mcps/agno/agno/logs/mcp-puppeteer-2025-07-16.log",
+            "hash": "4ddd13a36e3ff2001922c16e41c47096aebbd73b748f2eb5c355d123af0ef2bc"
+        }
+    ],
+    "hashType": "sha256"
+}

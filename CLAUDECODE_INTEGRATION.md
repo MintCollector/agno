@@ -254,3 +254,22 @@ This integration allows agno users to:
 4. Switch between API and local Claude easily
 
 The implementation provides a clean abstraction that makes local Claude Code work seamlessly within the agno framework while respecting the differences between API and local execution models.
+
+## Dependency Resolution Update
+
+### Previously Existing Conflict
+The original agno repository had a dependency conflict:
+- `brave-search` requires `httpx>=0.25.2,<0.26.0`
+- `lmstudio` requires `httpx>=0.27.2`
+
+### Resolution
+We removed `lmstudio` from the default model installations in `pyproject.toml`. This allows:
+- All dependencies including `brave-search` to install together
+- Full test suite (`agno[tests]`) to install without conflicts
+- Users who need local AI can use `claudecode` or `ollama` instead of `lmstudio`
+
+Now you can install the complete agno package with all features:
+```bash
+# Install everything including ClaudeCode and all tools
+uv pip install -e ".[tests]"
+```
