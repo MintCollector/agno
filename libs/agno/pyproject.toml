@@ -72,6 +72,48 @@ claudecode = ["claude-code-sdk"]
 
 # Minimal install for just ClaudeCode (no conflicting dependencies)
 claudecode-minimal = ["claude-code-sdk"]
+
+# Full agno with ClaudeCode but without conflicting packages
+agno-claudecode = [
+    # Core dependencies (same as base agno)
+    "docstring-parser",
+    "gitpython",
+    "httpx",
+    "pydantic-settings",
+    "pydantic",
+    "python-dotenv",
+    "python-multipart",
+    "pyyaml",
+    "rich",
+    "tomli",
+    "typer",
+    "typing-extensions",
+    # ClaudeCode
+    "claude-code-sdk",
+    # Popular models (without lmstudio)
+    "anthropic",
+    "openai",
+    "groq",
+    "ollama",
+    "mistralai",
+    "cohere",
+    # Essential tools (without brave-search)
+    "duckduckgo-search",
+    "yfinance",
+    "wikipedia-api",
+    "arxiv",
+    "newspaper3k",
+    # Storage
+    "sqlalchemy",
+    "psycopg-binary",
+    # Common vector DBs
+    "chromadb",
+    "qdrant-client",
+    # Knowledge
+    "pypdf",
+    "python-docx",
+    "aiofiles"
+]
 cohere = ["cohere"]
 infinity = ["infinity_client"]
 google = ["google-genai"]
@@ -164,7 +206,7 @@ docker = ["agno-docker"]
 # Dependencies for AWS
 aws = ["agno-aws", "agno-docker"]
 
-# All models (excluding conflicting ones)
+# All models (without lmstudio to avoid conflicts)
 models = [
   "agno[anthropic]",
   "agno[azure]",
@@ -175,21 +217,48 @@ models = [
   "agno[google]",
   "agno[groq]",
   "agno[ibm]",
-  "agno[infinity]",
   "agno[litellm]",
   "agno[meta]",
   "agno[mistral]",
   "agno[ollama]",
   "agno[openai]"
+  # "agno[lmstudio]"  # Excluded due to httpx conflicts
 ]
 
-# Models with conflicting dependencies (install separately)
-models-extended = [
-  "agno[models]",
-  "agno[lmstudio]"
+# All tools (without conflicting brave-search)
+tools-no-conflicts = [
+  "agno[apify]",
+  # "agno[brave]",  # Conflicts with httpx versions
+  "agno[exa]",
+  "agno[cartesia]",
+  "agno[ddg]",
+  "agno[duckdb]",
+  "agno[newspaper]",
+  "agno[youtube]",
+  "agno[firecrawl]",
+  "agno[crawl4ai]",
+  "agno[github]",
+  "agno[gmail]",
+  "agno[googlemaps]",
+  "agno[todoist]",
+  "agno[matplotlib]",
+  "agno[elevenlabs]",
+  "agno[fal]",
+  "agno[webex]",
+  "agno[mcp]",
+  "agno[browserbase]",
+  "agno[agentql]",
+  "agno[opencv]",
+  "agno[valyu]",
+  "agno[yfinance]",
+  "agno[confluence]",
+  "agno[oxylabs]",
+  "agno[zep]",
+  "agno[mem0]",
+  "agno[google_bigquery]",
 ]
 
-# All tools
+# All tools (original, with conflicts)
 tools = [
   "agno[apify]",
   "agno[brave]",
@@ -262,7 +331,7 @@ embedders = [
   "agno[huggingface]"
 ]
 
-# All libraries for testing
+# All libraries for testing (original, with conflicts)
 tests = [
     "agno[dev]",
     "agno[models]",
@@ -276,6 +345,18 @@ tests = [
     "agno[agui]",
     "twine",
     "build",
+]
+
+# Full agno installation without conflicts
+full-no-conflicts = [
+    "agno[dev]",
+    "agno[models]",
+    "agno[tools-no-conflicts]",
+    "agno[storage]",
+    "agno[vectordbs]",
+    "agno[knowledge]",
+    "agno[embedders]",
+    "agno[claudecode]",
 ]
 
 [project.scripts]
